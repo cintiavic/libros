@@ -24,20 +24,20 @@ document.addEventListener(
                     <p>Author: ${libro.autorLibro}</p>
                     <p>Genre: ${libro.generoLibro}</p>
                     <p>Year: ${libro.anioLibro}</p>
-                    <button onclick="editarLibro(${libro.id})">Editar</button>
-                    <button onclick="borrarLibro(${libro.id})">Borrar</button>
+                    <button onclick="editarLibro(${libro.idLibro})">Editar</button>
+                    <button onclick="borrarLibro(${libro.idLibro})">Borrar</button>
                 `;
                 /*Añade el div del libro al contenedor listaLibros.*/
-                listaLibros.appendChild(libroItem);
+                listaLibros.appendChild(itemLibro);
                 });
             });
         }
 );
   
 
-function editarlibro(id) {
+function editarLibro(id) {
    /*  /bookForm.html?id=${id}``: Redirige al usuario a bookForm.html, pasando el ID del libro como un parámetro en la URL. Esto permite que el formulario de edición sepa qué libro debe cargar y editar */
-    location.href = `/altaLibro.html?id=${id}`;
+    location.href = `/pages/altaLibro.html?id=${id}`;
   }
   
 function borrarLibro(id) {

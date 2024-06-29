@@ -5,17 +5,20 @@ document.addEventListener('DOMContentLoaded',
     () => {
     const urlParams = new URLSearchParams(window.location.search); //Crea un objeto URLSearchParams que representa los parámetros de la URL.
     const idLibro = urlParams.get('id');//Obtiene el valor del parámetro id de la URL. Este id corresponde al ID del libro que se va a editar
-  
+    console.log(idLibro);
     if (idLibro) {
         //si hay idLibro es que estoy en Editar, tengo que precargar los campos
+      
       fetch(`/libros/${idLibro}`)
         .then(response => response.json())
         //lo que me devuelve la promesa json lo llamo libro
         .then(libro => {
-          document.getElementById('tituloLibro').value = libro.tituloLibro;
-          document.getElementById('autorLibro').value = libro.autorLibro;
-          document.getElementById('generoLibro').value = libro.generoLibro;
-          document.getElementById('anioLibro').value = libro.anioLibro;
+
+          document.getElementById('tituloAlta').innerText="Editar Libro"
+          document.getElementById('tituloLibro').value = libro[0].tituloLibro;
+          document.getElementById('autorLibro').value = libro[0].autorLibro;
+          document.getElementById('generoLibro').value = libro[0].generoLibro;
+          document.getElementById('anioLibro').value = libro[0].anioLibro;
         });
     }
   
