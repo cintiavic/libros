@@ -1,0 +1,14 @@
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button{
+    border:none;
+    padding:15px 20px;
+    font-family: inherit;
+    font-weight: 600;
+    background-color: cornflowerblue;
+    border-radius: 10px;
+   
+}
