@@ -1,12 +1,33 @@
 const db = require("../data/db.js");
 
-const getAllLibros = (req,res) => {
-    const sqlAllLibros = 'SELECT * FROM libros;'
-    db.query(sqlAllLibros,(error,results)=>{
-        if (error) {throw(error)};
-        res.json(results);
-    })
-};
+const getAllLibros = (req, res) => {
+    const { titulo, autor, genero, anio } = req.query;
+    let sqlAllLibros = 'SELECT * FROM libros WHERE 1=1';
+    const params = [];
+  
+    if (titulo) {
+      sqlAllLibros += ' AND tituloLibro LIKE ?';
+      params.push(`%${titulo}%`);
+    }
+    if (autor) {
+      sqlAllLibros += ' AND autorLibro LIKE ?';
+      params.push(`%${autor}%`);
+    }
+    if (genero) {
+      sqlAllLibros += ' AND generoLibro = ?';
+      params.push(genero);
+    }
+    if (anio) {
+      sqlAllLibros += ' AND anioLibro = ?';
+      params.push(anio);
+    }
+  
+    db.query(sqlAllLibros, params, (error, results) => {
+      if (error) { throw error; }
+      res.json(results);
+    });
+  };
+
 
 const getLibro = (req,res) => {
     const id = req.params.id;

@@ -9,6 +9,24 @@
 <body>
   <h1>Libros</h1>
   <button onclick="location.href='./pages/altaLibro.html'">Crear Libro</button>
+  <form id="formBusqueda">
+    <label for="tituloFiltro">Titulo</label>
+    <input type="text" name="tituloFiltro" id="tituloFiltro">
+    <label for="autorFiltro">Autor</label>
+    <input type="text" name="autorFiltro" id="autorFiltro">
+    <label for="generoFiltro">Genero</label>
+    <select id="generoFiltro" name="generoFiltro">
+      <option value="">Seleccione un género</option>
+      <option value="ficcion">Ficción</option>
+      <option value="no-ficcion">No ficción</option>
+      <option value="ciencia">Ciencia</option>
+      <option value="historia">Historia</option>
+    </select>
+    <label for="anioFiltro">Año</label>
+    <input type="text" name="anioFiltro" id="anioFiltro">
+    <button type="submit">Buscar</button>
+    <button type="button" id="resetButton">Limpiar filtros</button>
+  </form>
   <div id="listaLibros"></div>
   <script src="./js/main.js"></script>
 </body>

@@ -63,5 +63,10 @@ document.addEventListener('DOMContentLoaded',
         });
         
     });
+
+    /*Manejamos el botón Cancelar del formulario*/
+    document.getElementById('btnCancelar').addEventListener('click',()=>{
+      location.href='/';
+    })
   });
   
