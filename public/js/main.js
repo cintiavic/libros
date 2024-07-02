@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function editarLibro(id) {
-  location.href = `/pages/altaLibro.html?id=${id}`;
+  location.href = `/editarLibro?id=${id}`;
 }
 
 function borrarLibro(id) {

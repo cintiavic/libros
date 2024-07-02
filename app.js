@@ -10,6 +10,13 @@ app.use(express.json());
 /* app.use(express.urlencoded()); */
 
 app.use(express.static(path.join(__dirname, '/public')));
+app.get('/altaLibro', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/pages/altaLibro.html'));
+});
+
+app.get('/editarLibro', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/pages/altaLibro.html'));
+});
 app.use("/libros",librosRoutes);
 
 app.listen(PORT,()=>{console.log(`Servidor escuchando en puerto ${PORT}`)})
