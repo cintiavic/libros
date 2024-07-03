@@ -20,7 +20,7 @@ connection.query(sqlCreateDB, (err, results) => {
 
                         })
                         const sqlCreateTable = 
-                        'CREATE TABLE IF NOT EXISTS bibliotecasimple.libros (idLibro INT NOT NULL AUTO_INCREMENT, tituloLibro VARCHAR(45) NOT NULL, autorLibro VARCHAR(100) NOT NULL, generoLibro VARCHAR(45) NULL, anioLibro INT NULL,PRIMARY KEY (idLibro));'
+                        'CREATE TABLE IF NOT EXISTS bibliotecasimple.libros (idLibro INT NOT NULL AUTO_INCREMENT, tituloLibro VARCHAR(45) NOT NULL, autorLibro VARCHAR(100) NOT NULL, generoLibro VARCHAR(45) NULL, anioLibro INT NULL, portadaLibro VARCHAR(255) NULL, PRIMARY KEY (idLibro));'
                         connection.query(sqlCreateTable, (err,results)=> {
                             if (err) {console.error("Error al crear la Tabla",err); return}
                             console.log("Tabla creada exitosamente");

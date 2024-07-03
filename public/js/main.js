@@ -10,9 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else{
           libros.forEach(libro => {
+          
           const itemLibro = document.createElement('div');
           itemLibro.innerHTML = `
-            <h3>${libro.tituloLibro}</h3>
+            <h4>${libro.tituloLibro}</h4>
+            <img src=${libro.portadaLibro} alt="imagen portada del libro" style="width:100px">
             <p>Autor: ${libro.autorLibro}</p>
             <p>Género: ${libro.generoLibro}</p>
             <p>Año: ${libro.anioLibro}</p>
@@ -34,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const autor = document.getElementById('autorFiltro').value;
     const genero = document.getElementById('generoFiltro').value;
     const anio = document.getElementById('anioFiltro').value;
+   
 
     let query = '/libros?';
     if (titulo) query += `titulo=${titulo}&`;

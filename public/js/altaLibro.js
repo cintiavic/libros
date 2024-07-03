@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded',
     () => {
     const urlParams = new URLSearchParams(window.location.search); //Crea un objeto URLSearchParams que representa los parámetros de la URL.
     const idLibro = urlParams.get('id');//Obtiene el valor del parámetro id de la URL. Este id corresponde al ID del libro que se va a editar
-    console.log(idLibro);
+  
     if (idLibro) {
         //si hay idLibro es que estoy en Editar, tengo que precargar los campos
       
@@ -15,10 +15,12 @@ document.addEventListener('DOMContentLoaded',
         .then(libro => {
 
           document.getElementById('tituloAlta').innerText="Editar Libro"
+          document.getElementById('portadaImg').innerHTML=`<img src=${libro[0].portadaLibro} alt="imagen portada del libro" style="width:100px">`;
           document.getElementById('tituloLibro').value = libro[0].tituloLibro;
           document.getElementById('autorLibro').value = libro[0].autorLibro;
           document.getElementById('generoLibro').value = libro[0].generoLibro;
           document.getElementById('anioLibro').value = libro[0].anioLibro;
+          
         });
     }
   
@@ -30,7 +32,8 @@ document.addEventListener('DOMContentLoaded',
         tituloLibro: document.getElementById('tituloLibro').value,
         autorLibro: document.getElementById('autorLibro').value,
         generoLibro: document.getElementById('generoLibro').value,
-        anioLibro: document.getElementById('anioLibro').value
+        anioLibro: document.getElementById('anioLibro').value,
+        portadaLibro: document.getElementById('portadaLibro').value
       };
   
       /*Determino el método y la url de la solicitud*/
