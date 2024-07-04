@@ -25,7 +25,7 @@ app.get("/editarLibro", (req, res) => {
     res.sendFile(path.join(__dirname, 'public/pages/altaLibro.html'));
 });
 
-app.listen(PORT,()=>{console.log(`⚡Servidor escuchando en puerto ${PORT}`)});
+app.listen(PORT,()=>{console.log(`⚡ Servidor escuchando en puerto ${PORT}`)});
 
 module.exports = app;
 

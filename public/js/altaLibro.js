@@ -26,49 +26,12 @@ document.addEventListener('DOMContentLoaded',
         });
     }
 
-    /* Manejamos el boton Submit del formulario*/
-   /*  document.getElementById('formAltaLibro').addEventListener('submit', (event) => {
-      event.preventDefault(); 
-   
-      const libroData = { 
-        tituloLibro: document.getElementById('tituloLibro').value,
-        autorLibro: document.getElementById('autorLibro').value,
-        generoLibro: document.getElementById('generoLibro').value,
-        anioLibro: document.getElementById('anioLibro').value,
-        portadaLibro: document.getElementById('portadaLibro').files[0]
-      };
-      console.log(libroData.portadaLibro);
-      
-
-   
-      const method = idLibro ? 'PUT' : 'POST';
-      const url = idLibro ? `/libros/${idLibro}` : '/libros'; 
-
-      
-      fetch(url, {
-        method: method,
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(libroData)
-      })
-        .then(response => response.json())
-        .then(result => {
-          alert('libro guardado con éxito');
-          location.href = '/';
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          alert('Hubo un error al guardar el libro');
-        });
-        
-    }); */
 
     document.getElementById('formAltaLibro').addEventListener('submit', (event) => {
       event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional.
   
       const formData = new FormData(event.target); // Usa FormData para recopilar los datos del formulario, incluyendo archivos.
-      console.log(event.target);
+      
       const method = idLibro ? 'PUT' : 'POST'; // Si idLibro está presente, usa PUT para actualizar; de lo contrario, usa POST para crear.
       const url = idLibro ? `/libros/${idLibro}` : '/libros';
   
@@ -91,7 +54,7 @@ document.addEventListener('DOMContentLoaded',
           location.href = '/';
       })
       .catch((error) => {
-          console.error('Error:', error);
+          console.error('❌  Error:', error);
           alert('Hubo un error al guardar el libro');
       });
   });

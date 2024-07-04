@@ -73,7 +73,7 @@ function borrarLibro(id) {
         location.reload();
       })
       .catch(error => {
-        console.error('Error al borrar el libro:', error);
+        console.error('❌  Error al borrar el libro:', error);
         alert('Hubo un error al borrar el libro.');
       });
   } else {
