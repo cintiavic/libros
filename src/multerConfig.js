@@ -8,7 +8,7 @@ createUploadDir();
 // Configuración de almacenamiento para multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../public/uploads'));
+    cb(null, path.join(__dirname, '../uploads'));
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname));
@@ -27,7 +27,7 @@ const fileFilter = (req, file, cb) => {
 
 // Límite de tamaño del archivo (opcional)
 const limits = {
-  fileSize: 1000000
+  fileSize: 1000000000
 };
 
 const upload = multer({

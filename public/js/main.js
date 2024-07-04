@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const itemLibro = document.createElement('div');
           itemLibro.innerHTML = `
             <h4>${libro.tituloLibro}</h4>
-            <img src=${libro.portadaLibro} alt="imagen portada del libro" style="width:100px">
+            <img src="/uploads/${libro.portadaLibro}" alt="imagen portada del libro" style="width:100px">
+            
             <p>Autor: ${libro.autorLibro}</p>
             <p>Género: ${libro.generoLibro}</p>
             <p>Año: ${libro.anioLibro}</p>

@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded',
         .then(response => response.json())
         //lo que me devuelve la promesa json lo llamo libro
         .then(libro => {
+         
 
           document.getElementById('tituloAlta').innerText="Editar Libro"
-          document.getElementById('portadaImg').innerHTML=`<img src=${libro[0].portadaLibro} alt="imagen portada del libro" style="width:100px">`;
+          document.getElementById('portadaImg').innerHTML=`<img src="uploads/${libro[0].portadaLibro}" alt="imagen portada del libro" style="width:100px">`;
+                                                      
           document.getElementById('tituloLibro').value = libro[0].tituloLibro;
           document.getElementById('autorLibro').value = libro[0].autorLibro;
           document.getElementById('generoLibro').value = libro[0].generoLibro;
@@ -23,31 +25,26 @@ document.addEventListener('DOMContentLoaded',
           
         });
     }
-  
+
     /* Manejamos el boton Submit del formulario*/
-    document.getElementById('formAltaLibro').addEventListener('submit', (event) => {
-      event.preventDefault(); //Evita que el formulario se envíe de la manera tradicional (recargando la página).
-  
-      const libroData = { //recopilo los datos del form
+   /*  document.getElementById('formAltaLibro').addEventListener('submit', (event) => {
+      event.preventDefault(); 
+   
+      const libroData = { 
         tituloLibro: document.getElementById('tituloLibro').value,
         autorLibro: document.getElementById('autorLibro').value,
         generoLibro: document.getElementById('generoLibro').value,
         anioLibro: document.getElementById('anioLibro').value,
-        portadaLibro: document.getElementById('portadaLibro').value
+        portadaLibro: document.getElementById('portadaLibro').files[0]
       };
-  
-      /*Determino el método y la url de la solicitud*/
+      console.log(libroData.portadaLibro);
       
-      const method = idLibro ? 'PUT' : 'POST';//Si bookId está presente, usa PUT para actualizar un libro existente; de lo contrario, usa POST para crear un nuevo libro.
-      const url = idLibro ? `/libros/${idLibro}` : '/libros'; //Similarmente, ajusta la URL de la solicitud según si estamos editando o creando un libro.
 
-      /* Envio la solicitud*/
-      /* Hace una solicitud fetch a la URL con el método determinado (POST o PUT).
-          -Establece los headers para indicar que el contenido es JSON.
-          -Convierte los datos del formulario en una cadena JSON para enviarlos en el cuerpo de la solicitud.
-          -Maneja la respuesta del servidor:
-              Muestra un mensaje de éxito y redirige a la página principal (/) si la solicitud fue exitosa.
-              Muestra un mensaje de error si hubo un problema al guardar el libro. */
+   
+      const method = idLibro ? 'PUT' : 'POST';
+      const url = idLibro ? `/libros/${idLibro}` : '/libros'; 
+
+      
       fetch(url, {
         method: method,
         headers: {
@@ -65,7 +62,39 @@ document.addEventListener('DOMContentLoaded',
           alert('Hubo un error al guardar el libro');
         });
         
-    });
+    }); */
+
+    document.getElementById('formAltaLibro').addEventListener('submit', (event) => {
+      event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional.
+  
+      const formData = new FormData(event.target); // Usa FormData para recopilar los datos del formulario, incluyendo archivos.
+      console.log(event.target);
+      const method = idLibro ? 'PUT' : 'POST'; // Si idLibro está presente, usa PUT para actualizar; de lo contrario, usa POST para crear.
+      const url = idLibro ? `/libros/${idLibro}` : '/libros';
+  
+      fetch(url, {
+          method: method,
+          body: formData // Usa FormData directamente como cuerpo de la solicitud.
+      })
+      .then(response => {
+        
+        if (!response.ok) {
+            
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(result => {
+       
+          alert('Libro guardado con éxito');
+         
+          location.href = '/';
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+          alert('Hubo un error al guardar el libro');
+      });
+  });
 
     /*Manejamos el botón Cancelar del formulario*/
     document.getElementById('btnCancelar').addEventListener('click',()=>{
