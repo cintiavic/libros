@@ -41,7 +41,7 @@ const getLibro = (req,res) => {
 const crearLibro  = (req,res) => {
     const {tituloLibro,autorLibro,generoLibro,anioLibro} = req.body;
     console.log("req.body + ", req.body);
-    const portadaLibro = req.file ?  `/uploads/${req.file.filename}` : null;
+    const portadaLibro = req.file ?  `../uploads/${req.file.filename}` : null;
    
     const sqlCrearLibro = 'INSERT INTO libros (tituloLibro,autorLibro,generoLibro,anioLibro,portadaLibro) VALUES (?,?,?,?,?)';
     db.query(sqlCrearLibro,[tituloLibro,autorLibro,generoLibro,anioLibro,portadaLibro],(error,results)=>{

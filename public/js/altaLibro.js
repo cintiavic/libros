@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',
          
 
           document.getElementById('tituloAlta').innerText="Editar Libro"
-          document.getElementById('portadaImg').innerHTML=`<img src="uploads/${libro[0].portadaLibro}" alt="imagen portada del libro" style="width:100px">`;
+          document.getElementById('portadaImg').innerHTML=`<img src="./uploads/${libro[0].portadaLibro}" alt="imagen portada del libro" style="width:100px">`;
                                                       
           document.getElementById('tituloLibro').value = libro[0].tituloLibro;
           document.getElementById('autorLibro').value = libro[0].autorLibro;
